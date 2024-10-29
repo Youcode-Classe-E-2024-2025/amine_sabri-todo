@@ -9,26 +9,40 @@
     <title>Document</title>
 </head>
 <body>
-    <header class="border-2 border-zinc-950 flex justify-between px-24 p-5 font-bold font-sans">
-        <h1>TO DO LIST</h1>
+    <header class="border-2 border-zinc-950 flex items-center px-24 p-2 font-bold font-sans">
+        <img src="./assets/images/Task Flow logo.png" alt="logo not found" width="60px" height="60px"><h1>TASK FLOW</h1>
     </header>
     
     
     <section class="flex justify-between px-24 p-5 my-10">
-        <button class="border border-black rounded-md w-64 h-10 flex justify-around items-center font-bold">Add tache <span class=" text-3xl"><i class="bi bi-plus"></i></span></button>
+        <button class="border border-black rounded-md w-64 h-10 flex justify-between px-3 ps-3 items-center font-bold">Add tache <span class=" text-3xl"><i class="bi bi-plus"></i></span></button>
         <input type="text" placeholder="Search" class="border border-black rounded-md w-64 h-10 outline-none ps-3">
 
     </section>
     
-    <section class="container flex justify-around border-2 border-zinc-950 h-full">
-        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex justify-center items-start">
+    <section class="container flex justify-around  h-full">
+        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex  flex-col items-center  ">
             <div class="header-todo border-2 border-zinc-900 flex justify-between items-center ps-4 pe-4 w-80 h-10 mt-3">
                 <p class="font-bold w-7  border-2 border-zinc-900 rounded-full text-center">0</p>
                 <h2 class="font-bold">TO DO</h2>
                 <i class="bi bi-arrow-down-up font-bold"></i>
             </div>
-            <div class="tache">
-                
+            <div class="tache  w-80 mt-6">
+                <div class="header-tache  border-2 border-zinc-900 flex justify-between items-center ps-4 pe-4 w-80 h-10">
+                    <i class="bi bi-pencil-square"></i>
+                    <h3>Titre</h3>
+                    <i class="bi bi-trash"></i>
+                </div>
+                <div class="description-tahe overflow-scroll h-24">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                        Iste neque voluptatem quaerat maxime, temporibus accusamus doloremque
+                         fuga quibusdam vel blanditiis voluptatum dolorum voluptate reiciendis
+                         Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. tenetur rem distinctio! Dolor, perspiciatis minus?</p>
+                </div>
+                <div class="foot-tache flex justify-between">
+                     <p class="border-2 border-zinc-900 w-24 text-center font-bold rounded-se-xl">P1</p>
+                     <input type="date" name="" id="" class="border-2 border-zinc-900 w-34 text-center font-bold rounded-es-xl">
+                </div>
             </div>
         </div>
         <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex justify-center items-start">
