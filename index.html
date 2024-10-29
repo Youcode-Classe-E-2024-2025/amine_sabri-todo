@@ -8,59 +8,103 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
-    <header class="border-2 border-zinc-950 flex items-center px-24 p-2 font-bold font-sans">
-        <img src="./assets/images/Task Flow logo.png" alt="logo not found" width="60px" height="60px"><h1>TASK FLOW</h1>
+<body class="bg-gray-100">
+    <header class="border-b border-zinc-950 flex items-center px-24 p-2 font-bold font-sans bg-white">
+        <img src="./assets/images/Task Flow logo.png" alt="logo not found" class="w-16 h-16"><h1 class="text-2xl ml-3">TASK FLOW</h1>
     </header>
-    
-    
-    <section class="flex justify-between px-24 p-5 my-10">
-        <button class="border border-black rounded-md w-64 h-10 flex justify-between px-3 ps-3 items-center font-bold">Add tache <span class=" text-3xl"><i class="bi bi-plus"></i></span></button>
-        <input type="text" placeholder="Search" class="border border-black rounded-md w-64 h-10 outline-none ps-3">
 
+    <section class="flex justify-between px-24 p-5 my-10">
+        <button id="btnAdd" class=" rounded-md w-64 h-10 flex justify-between px-3 items-center bg-blue-500 text-white hover:bg-blue-600 transition duration-200">
+            Add Task <span class="text-3xl"><i class="bi bi-plus"></i></span>
+        </button>
+        <input type="text" placeholder="Search" class="border border-black rounded-md w-64 h-10 outline-none ps-3 hover:border-blue-500 transition duration-200">
     </section>
-    
-    <section class="container flex justify-around  h-full">
-        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex  flex-col items-center  ">
-            <div class="header-todo border-2 border-zinc-900 flex justify-between items-center ps-4 pe-4 w-80 h-10 mt-3">
-                <p class="font-bold w-7  border-2 border-zinc-900 rounded-full text-center">0</p>
-                <h2 class="font-bold">TO DO</h2>
+
+    <section class="container flex justify-around h-full">
+        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex flex-col items-center bg-white shadow-md rounded-lg">
+            <div class="header-todo border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
+                <p class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
+                <h2 class="font-bold text-lg">TO DO</h2>
                 <i class="bi bi-arrow-down-up font-bold"></i>
             </div>
-            <div class="tache  w-80 mt-6">
-                <div class="header-tache  border-2 border-zinc-900 flex justify-between items-center ps-4 pe-4 w-80 h-10">
+            <div class="tache w-full mt-6 px-3">
+                <div class="header-tache border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
                     <i class="bi bi-pencil-square"></i>
-                    <h3>Titre</h3>
+                    <h3 class="font-semibold">Title</h3>
                     <i class="bi bi-trash"></i>
                 </div>
-                <div class="description-tahe overflow-scroll h-24">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                <div class="description-tache overflow-y-scroll h-24">
+                    <p class="text-gray-700">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                         Iste neque voluptatem quaerat maxime, temporibus accusamus doloremque
                          fuga quibusdam vel blanditiis voluptatum dolorum voluptate reiciendis
                          Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. tenetur rem distinctio! Dolor, perspiciatis minus?</p>
                 </div>
-                <div class="foot-tache flex justify-between">
+                <div class="foot-tache flex justify-between mt-2">
                      <p class="border-2 border-zinc-900 w-24 text-center font-bold rounded-se-xl">P1</p>
-                     <input type="date" name="" id="" class="border-2 border-zinc-900 w-34 text-center font-bold rounded-es-xl">
+                     <input type="date" class="border-2 border-zinc-900 w-34 text-center font-bold rounded-es-xl">
                 </div>
             </div>
         </div>
-        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex justify-center items-start">
-            <div class="header-todo border-2 border-zinc-900 flex justify-between items-center ps-4 pe-4 w-80 h-10 mt-3">
-                <p class="font-bold w-7  border-2 border-zinc-900 rounded-full text-center">0</p>
-                <h2 class="font-bold">DOING</h2>
+        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex flex-col items-center bg-white shadow-md rounded-lg">
+            <div class="header-todo border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
+                <p class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
+                <h2 class="font-bold text-lg">DOING</h2>
                 <i class="bi bi-arrow-down-up font-bold"></i>
             </div>
         </div>
-        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex justify-center items-start">
-            <div class="header-todo border-2 border-zinc-900 flex justify-between items-center ps-4 pe-4 w-80 h-10 mt-3">
-                <p class="font-bold w-7  border-2 border-zinc-900 rounded-full text-center">0</p>
-                <h2 class="font-bold">DONE</h2>
+        <div class="todo border-2 border-zinc-950 m-5 w-96 h-72 flex flex-col items-center bg-white shadow-md rounded-lg">
+            <div class="header-todo border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
+                <p class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
+                <h2 class="font-bold text-lg">DONE</h2>
                 <i class="bi bi-arrow-down-up"></i>
             </div>
         </div>
     </section>
 
+
+    <!-- MOdel window -->
+
+    <section id="myModal" class="model p-6 rounded-lg shadow-md fixed inset-0 z-10 pt-30 overflow-auto bg-black bg-opacity-40 hidden">
+        <div class="flex justify-end p-2 mt-16 mb-6 ">
+            <button id="close" class="btn btn-link text-white">
+                <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+            </button>
+        </div>
+        <form action="" class="space-y-4 p-6 bg-gray-100 rounded-lg shadow-md w-1/4 mx-auto">
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="title">Titre</label>
+                <input type="text" id="title" class="pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="Enter title">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="description">Description</label>
+                <textarea id="description" rows="3" class=" pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200" placeholder="Enter description"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="date">Date</label>
+                <input type="date" id="date" class="pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="priority">Priorité</label>
+                <select id="priority" class="pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+                    <option value="p1">P1</option>
+                    <option value="p2">P2</option>
+                    <option value="p3">P3</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="status">Statut</label>
+                <select id="Statut" class=" pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+                    <option value="done">Done</option>
+                    <option value="doing">Doing</option>
+                    <option value="not-done">Not Done</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700">Submit</button>
+            </div>
+        </form>
+    </section>
+    
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
