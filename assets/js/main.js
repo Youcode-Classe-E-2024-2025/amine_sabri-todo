@@ -146,7 +146,6 @@ function ajouteTask() {
 function deleteTask(index) {
     let tasks = JSON.parse(localStorage.getItem('taskss')) || [];
     
-    // Prompt for confirmation before deleting
     if (confirm("wx mataakad bghi tam7i tache ?")) {
         tasks.splice(index, 1); 
         localStorage.setItem('taskss', JSON.stringify(tasks)); 
