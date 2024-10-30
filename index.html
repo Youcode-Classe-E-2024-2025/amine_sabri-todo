@@ -21,45 +21,43 @@
     </section>
 
     <section class="container flex justify-around h-full">
-        <div class="todo border-2 border-zinc-950 m-5 w-96  pb-4 flex flex-col items-center bg-white shadow-md rounded-lg">
+        
+        <div class="todo border-2 border-zinc-950 m-5 w-96 pb-4 flex flex-col items-center bg-white shadow-md rounded-lg">
             <div class="header-todo border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
-                <p id="count" class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
+                <p id="countTodo" class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
                 <h2 class="font-bold text-lg">TO DO</h2>
                 <i class="bi bi-arrow-down-up font-bold"></i>
             </div>
             <div id="tache" class="tache w-full mt-6 px-3">
-                <div class="header-tache border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
-                    <i class="bi bi-pencil-square"></i>
-                    <h3 class="font-semibold">Title</h3>
-                    <i class="bi bi-trash"></i>
-                </div>
-                <div class="description-tache overflow-y-scroll h-24">
-                    <p class="text-gray-700">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                        Iste neque voluptatem quaerat maxime, temporibus accusamus doloremque
-                         fuga quibusdam vel blanditiis voluptatum dolorum voluptate reiciendis
-                         Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. tenetur rem distinctio! Dolor, perspiciatis minus?</p>
-                </div>
-                <div class="foot-tache flex justify-between mt-2">
-                     <p class="border-2 border-zinc-900 w-24 text-center font-bold rounded-se-xl bg-lime-500 text-neutral-50">P1</p>
-                     <input type="date" class="border-2 border-zinc-900 w-34 text-center font-bold rounded-es-xl">
-                </div>
+                
             </div>
         </div>
-        <div class="todo border-2 border-zinc-950 m-5 w-96  pb-4 flex flex-col items-center bg-white shadow-md rounded-lg">
+    
+        
+        <div id="doing" class="todo border-2 border-zinc-950 m-5 w-96 pb-4 flex flex-col items-center bg-white shadow-md rounded-lg">
             <div class="header-todo border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
-                <p class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
+                <p id="countDoing" class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
                 <h2 class="font-bold text-lg">DOING</h2>
                 <i class="bi bi-arrow-down-up font-bold"></i>
             </div>
+            <div id="doingTasks" class="doing-tasks w-full mt-6 px-3">
+                
+            </div>
         </div>
-        <div class="todo border-2 border-zinc-950 m-5 w-96  pb-4 flex flex-col items-center bg-white shadow-md rounded-lg">
+    
+        
+        <div id="done" class="todo border-2 border-zinc-950 m-5 w-96 pb-4 flex flex-col items-center bg-white shadow-md rounded-lg">
             <div class="header-todo border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
-                <p class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
+                <p id="countDone" class="font-bold w-7 border-2 border-zinc-900 rounded-full text-center">0</p>
                 <h2 class="font-bold text-lg">DONE</h2>
                 <i class="bi bi-arrow-down-up"></i>
             </div>
+            <div id="doneTasks" class="done-tasks w-full mt-6 px-3">
+                
+            </div>
         </div>
     </section>
+    
 
 
     <!-- MOdel window -->
@@ -86,6 +84,7 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700" for="priority">Priorité</label>
                 <select id="priority" class="pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
+                    <option value="" >select priority</option>
                     <option value="p1">P1</option>
                     <option value="p2">P2</option>
                     <option value="p3">P3</option>
@@ -94,9 +93,10 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700" for="status">Statut</label>
                 <select id="Statut" class=" pl-3 mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200">
-                    <option value="done">Done</option>
+                    <option value="">select statut</option>
+                    <option value="todo">Todo</option>
                     <option value="doing">Doing</option>
-                    <option value="not-done">Not Done</option>
+                    <option value="done">Done</option>
                 </select>
             </div>
             <div>
