@@ -51,6 +51,7 @@ submitTache.addEventListener("click", function(e) {
 });
 
 
+// vide forms
 function videForm() {
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
@@ -61,6 +62,7 @@ function videForm() {
 }
 
 
+// counteur 
 function TaskCount() {
     const countTodo = document.getElementById("countTodo");
     const countDoing = document.getElementById("countDoing");
@@ -68,12 +70,12 @@ function TaskCount() {
 
     let tasks = JSON.parse(localStorage.getItem('taskss')) || [];
 
-    // Count tasks based on their status
+    
     const todoCount = tasks.filter(task => task.status === "todo").length;
     const doingCount = tasks.filter(task => task.status === "doing").length;
     const doneCount = tasks.filter(task => task.status === "done").length;
 
-    // Update the UI with the counts
+    
     countTodo.innerText = todoCount;
     countDoing.innerText = doingCount;
     countDone.innerText = doneCount;
@@ -85,11 +87,14 @@ window.onload = function() {
 };
 
 
+// ajouter tache dand la page
 function ajouteTask() {
     const tasks = JSON.parse(localStorage.getItem('taskss')) || [];
     document.getElementById("tache").innerHTML = "";
     document.getElementById("doingTasks").innerHTML = "";
     document.getElementById("doneTasks").innerHTML = "";
+
+    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     tasks.forEach((task, index) => {
         const divTask = document.createElement('div');
@@ -136,15 +141,22 @@ function ajouteTask() {
     TaskCount(); 
 }
 
-
+//  delete tache
 
 function deleteTask(index) {
     let tasks = JSON.parse(localStorage.getItem('taskss')) || [];
-    tasks.splice(index, 1); 
-    localStorage.setItem('taskss', JSON.stringify(tasks)); 
-    ajouteTask(); 
+    
+    // Prompt for confirmation before deleting
+    if (confirm("wx mataakad bghi tam7i tache ?")) {
+        tasks.splice(index, 1); 
+        localStorage.setItem('taskss', JSON.stringify(tasks)); 
+        ajouteTask(); 
+    }
 }
 
+
+
+// edit tache 
 
 function editTask(index) {
     const tasks = JSON.parse(localStorage.getItem('taskss')) || [];
