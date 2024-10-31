@@ -1,7 +1,7 @@
 const btnAdd = document.getElementById("btnAdd");
 const myModel = document.getElementById("myModal");
 const close = document.getElementById("close");
-let editIndex = null;
+
 
 btnAdd.addEventListener("click", function() {
     myModel.classList.toggle("hidden");
@@ -11,11 +11,12 @@ close.addEventListener("click", function() {
     myModel.classList.toggle("hidden");
 });
 
-
+const tasks = [];
+let index=0;
 const submitTache = document.getElementById("submitTache");
-
 submitTache.addEventListener("click", function(e) {
     e.preventDefault();
+    
     
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
@@ -28,7 +29,9 @@ submitTache.addEventListener("click", function(e) {
         return;
     }
 
+
     let task = {
+        id:index++,
         title: title,
         description: description,
         date: date,
@@ -36,18 +39,15 @@ submitTache.addEventListener("click", function(e) {
         status: status
     };
 
-    let tasks = JSON.parse(localStorage.getItem('taskss')) || [];
 
-    if (editIndex !== null) {
-        tasks[editIndex] = task;
-    } else {
-        tasks.push(task); 
-    }
-
+    tasks.push(task); 
+  
+    // console.log(tasks);
     localStorage.setItem('taskss', JSON.stringify(tasks));
     videForm();
-    ajouteTask();
-    myModel.classList.toggle("hidden");
+    afficheTask();
+    
+    // myModel.classList.toggle("hidden");
 });
 
 
@@ -58,7 +58,7 @@ function videForm() {
     document.getElementById("date").value = "";
     document.getElementById("priority").value = "";
     document.getElementById("Statut").value = "";
-    editIndex = null;
+    
 }
 
 
@@ -68,7 +68,7 @@ function TaskCount() {
     const countDoing = document.getElementById("countDoing");
     const countDone = document.getElementById("countDone");
 
-    let tasks = JSON.parse(localStorage.getItem('taskss')) || [];
+    let tasks = JSON.parse(localStorage.getItem('taskss'));
 
     
     const todoCount = tasks.filter(task => task.status === "todo").length;
@@ -81,28 +81,29 @@ function TaskCount() {
     countDone.innerText = doneCount;
 }
 
+window.onload = function(){
+    afficheTask();
+}
 
-window.onload = function() {
-    ajouteTask();
-};
 
 
-// ajouter tache dand la page
-function ajouteTask() {
-    const tasks = JSON.parse(localStorage.getItem('taskss')) || [];
+// affichage tache dand la page
+function afficheTask() {
+    const tasks = JSON.parse(localStorage.getItem('taskss'));
     document.getElementById("tache").innerHTML = "";
     document.getElementById("doingTasks").innerHTML = "";
     document.getElementById("doneTasks").innerHTML = "";
 
-    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+    tasks.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    tasks.forEach((task, index) => {
+    tasks.forEach((task) => {
         const divTask = document.createElement('div');
         divTask.innerHTML = `
             <div class="header-tache border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
                 <i class="bi bi-pencil-square"></i>
                 <h3 class="font-semibold">${task.title}</h3>
-                <i class="bi bi-trash"></i>
+                <i class="bi bi-trash">
+                </i>
             </div>
             <div class="description-tache overflow-y-scroll h-24">
                 <p>${task.description}</p>
@@ -130,11 +131,11 @@ function ajouteTask() {
         const editTaskBtn = divTask.querySelector('.bi-pencil-square');
 
         deleteTaskBtn.addEventListener('click', function() {
-            deleteTask(index); 
+            deleteTask(task.id); 
         });
 
         editTaskBtn.addEventListener('click', function() {
-            editTask(index); 
+            editTask(task.id); 
         });
     });
 
@@ -144,29 +145,43 @@ function ajouteTask() {
 //  delete tache
 
 function deleteTask(index) {
-    let tasks = JSON.parse(localStorage.getItem('taskss')) || [];
+    let tasks = JSON.parse(localStorage.getItem('taskss'));
+    // console.log(index);
     
-    if (confirm("wx mataakad bghi tam7i tache ?")) {
-        tasks.splice(index, 1); 
-        localStorage.setItem('taskss', JSON.stringify(tasks)); 
-        ajouteTask(); 
+    for (let i = 0; i < tasks.length; i++) {
+            if(tasks[i].id==index){
+                tasks.splice(i, 1); 
+                location.reload();
+                break; 
+            }
+            
     }
-}
+    localStorage.setItem('taskss', JSON.stringify(tasks)); 
+
+    afficheTask();
+
+    }
 
 
 
 // edit tache 
 
 function editTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('taskss')) || [];
-    const task = tasks[index];
+    const tasks = JSON.parse(localStorage.getItem('taskss'));
+    const task=tasks[index];
+    
+    
+    document.getElementById("title").value=task.title;
+    document.getElementById("description").value=task.description;
+    document.getElementById("date").value=task.date;
+    document.getElementById("priority").value=task.priority;
+    document.getElementById("Statut").value=task.status;
 
-    document.getElementById("title").value = task.title;
-    document.getElementById("description").value = task.description;
-    document.getElementById("date").value = task.date;
-    document.getElementById("priority").value = task.priority;
-    document.getElementById("Statut").value = task.status;
-
-    myModel.classList.remove("hidden"); 
-    editIndex = index;
+    
+    tasks[index].title=document.getElementById("title").value;
+    tasks[index].description=document.getElementById("description").value ;
+    tasks[index].date=document.getElementById("date").value ;
+    tasks[index].priority=document.getElementById("priority").value ;
+    tasks[index].status=document.getElementById("Statut").value;
+    
 }
