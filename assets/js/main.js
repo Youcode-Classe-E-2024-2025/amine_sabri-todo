@@ -208,8 +208,13 @@ function editTask(id) {
 const filterProirty = document.getElementById("filterPriorty");
 
 filterProirty.addEventListener("change",function(){
-    const filteredTaks = tasks.filter((task)=>task.priority === filterProirty.value);
-    afficheTask(filteredTaks)
+
+    if(filterProirty.value === "all proirty"){
+        afficheTask(tasks)
+    }else{
+        const filteredTaks = tasks.filter((task)=>task.priority === filterProirty.value);
+        afficheTask(filteredTaks)
+    }
     // console.log(filteredTaks)
 
 })
