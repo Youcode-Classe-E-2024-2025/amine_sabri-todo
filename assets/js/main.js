@@ -184,8 +184,6 @@ function editTask(index) {
     document.getElementById("Statut").value = task.status;
 
     
-    // btnModifier.replaceWith(btnModifier.cloneNode(true));
-    // const newBtnModifier = document.getElementById("modifierTache");
 
         btnModifier.addEventListener("click", function(e) {
             e.preventDefault();
