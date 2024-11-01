@@ -97,23 +97,27 @@ function afficheTask(arr) {
     arr.forEach((task) => {
         const divTask = document.createElement('div');
         divTask.innerHTML = `
-            <div class="header-tache border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
-                <i class="bi bi-pencil-square"></i>
-                <h3 class="font-semibold">${task.title}</h3>
-                <i class="bi bi-trash">
-                </i>
-            </div>
-            <div class="description-tache overflow-y-scroll h-24">
-                <p>${task.description}</p>
-            </div>
-            <div class="foot-tache flex justify-between mt-2">
-                <p class="border-2 border-zinc-900 w-24 text-center font-bold rounded-se-xl ${task.priority === 'p1' ? 'bg-red-500' : 
-                    task.priority === 'p2' ? 'bg-orange-500' : 
-                    task.priority === 'p3' ? 'bg-green-500' : 'bg-lime-500'}  text-neutral-50
-                
-                ">${task.priority}</p>
-                <input type="date" class="border-2 border-zinc-900 w-34 text-center font-bold rounded-es-xl" value="${task.date}">
-            </div>
+            <div class="task bg-white shadow-lg rounded-lg m-4 p-4 transition-transform duration-300 transform hover:scale-105">
+    <div class="header-tache border-b-2 border-gray-300 flex justify-between items-center pb-2">
+        <i class="bi bi-pencil-square text-blue-600"></i>
+        <h3 class="font-semibold text-xl text-gray-800 truncate">${task.title}</h3>
+        <i class="bi bi-trash text-red-600 cursor-pointer hover:text-red-800"></i>
+    </div>
+    <div class="description-tache overflow-y-auto h-24 bg-gray-50 p-2 rounded-lg mt-2  ">
+        <p class="text-gray-600 break-words max-w-[365px] whitespace-normal">${task.description}</p>
+    </div>
+    <div class="foot-tache flex justify-between mt-2 items-center">
+        <p class="border-2 border-gray-300 w-24 text-center font-bold rounded-md 
+            ${task.priority === 'p1' ? 'bg-red-500' : 
+              task.priority === 'p2' ? 'bg-orange-500' : 
+              task.priority === 'p3' ? 'bg-green-500' : 'bg-lime-500'} 
+            text-white transition-colors duration-300">
+            ${task.priority}
+        </p>
+        <input type="date" class="border-2 border-gray-300 w-32 text-center font-bold rounded-md" value="${task.date}">
+    </div>
+</div>
+
         `;
 
         if (task.status === "todo") {
@@ -135,7 +139,7 @@ function afficheTask(arr) {
 
         });
 
-        editTaskBtn.addEventListener('click', function(e) {
+        editTaskBtn.addEventListener('click', function() {
             editTask(task.id); 
         });
     });
@@ -172,7 +176,7 @@ function editTask(id) {
     const index = tasks.findIndex((task)=>task.id == id)
     const task = tasks[index]
 
-    console.log(task)
+    // console.log(task)
 
 
     myModel.classList.remove("hidden");
@@ -187,7 +191,7 @@ function editTask(id) {
 
     
 
-        btnModifier.addEventListener("click", function(e) {
+        btnModifier.onclick=function(e) {
             e.preventDefault();
         tasks[index].title = document.getElementById("title").value;
         tasks[index].description = document.getElementById("description").value;
@@ -202,7 +206,7 @@ function editTask(id) {
         submitTache.classList.remove("hidden");
         afficheTask(tasks);
         
-    });
+    };
 }
 
 const filterProirty = document.getElementById("filterPriorty");
