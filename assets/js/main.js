@@ -169,7 +169,7 @@ function deleteTask(index) {
 // edit tache 
 const btnModifier = document.getElementById("modifierTache");
 
-console.log(btnModifier);
+// console.log(btnModifier);
 
 function editTask(id) {
     // const tasks = JSON.parse(localStorage.getItem('taskss'));
