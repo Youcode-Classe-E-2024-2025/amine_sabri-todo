@@ -129,11 +129,14 @@ function afficheTask() {
         const deleteTaskBtn = divTask.querySelector('.bi-trash');
         const editTaskBtn = divTask.querySelector('.bi-pencil-square');
 
-        deleteTaskBtn.addEventListener('click', function() {
+        deleteTaskBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             deleteTask(task.id); 
+            afficheTask();
+
         });
 
-        editTaskBtn.addEventListener('click', function() {
+        editTaskBtn.addEventListener('click', function(e) {
             editTask(task.id); 
         });
     });
@@ -150,14 +153,11 @@ function deleteTask(index) {
     for (let i = 0; i < tasks.length; i++) {
             if(tasks[i].id==index){
                 tasks.splice(i, 1); 
-                location.reload();
                 break; 
             }
             
     }
     localStorage.setItem('taskss', JSON.stringify(tasks)); 
-
-    afficheTask();
 
     }
 
@@ -187,7 +187,8 @@ function editTask(index) {
     // btnModifier.replaceWith(btnModifier.cloneNode(true));
     // const newBtnModifier = document.getElementById("modifierTache");
 
-        btnModifier.addEventListener("click", function() {
+        btnModifier.addEventListener("click", function(e) {
+            e.preventDefault();
         tasks[index].title = document.getElementById("title").value;
         tasks[index].description = document.getElementById("description").value;
         tasks[index].date = document.getElementById("date").value;
@@ -199,6 +200,7 @@ function editTask(index) {
 
         myModel.classList.add("hidden");
         submitTache.classList.remove("hidden");
+        afficheTask();
         
     });
 }
