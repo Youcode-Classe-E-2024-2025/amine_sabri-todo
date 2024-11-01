@@ -29,7 +29,6 @@ submitTache.addEventListener("click", function(e) {
         return;
     }
 
-
     let task = {
         id:index++,
         title: title,
@@ -94,7 +93,7 @@ function afficheTask() {
     document.getElementById("doingTasks").innerHTML = "";
     document.getElementById("doneTasks").innerHTML = "";
 
-    tasks.sort((a, b) => new Date(b.date) - new Date(a.date));
+    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     tasks.forEach((task) => {
         const divTask = document.createElement('div');
@@ -165,23 +164,42 @@ function deleteTask(index) {
 
 
 // edit tache 
+const btnModifier = document.getElementById("modifierTache");
+
+console.log(btnModifier);
 
 function editTask(index) {
     const tasks = JSON.parse(localStorage.getItem('taskss'));
-    const task=tasks[index];
+    const task = tasks[index];
+
+
+    myModel.classList.remove("hidden");
+    submitTache.classList.add("hidden");
+    btnModifier.classList.remove("hidden");
     
-    
-    document.getElementById("title").value=task.title;
-    document.getElementById("description").value=task.description;
-    document.getElementById("date").value=task.date;
-    document.getElementById("priority").value=task.priority;
-    document.getElementById("Statut").value=task.status;
+    document.getElementById("title").value = task.title;
+    document.getElementById("description").value = task.description;
+    document.getElementById("date").value = task.date;
+    document.getElementById("priority").value = task.priority;
+    document.getElementById("Statut").value = task.status;
 
     
-    tasks[index].title=document.getElementById("title").value;
-    tasks[index].description=document.getElementById("description").value ;
-    tasks[index].date=document.getElementById("date").value ;
-    tasks[index].priority=document.getElementById("priority").value ;
-    tasks[index].status=document.getElementById("Statut").value;
-    
+    // btnModifier.replaceWith(btnModifier.cloneNode(true));
+    // const newBtnModifier = document.getElementById("modifierTache");
+
+        btnModifier.addEventListener("click", function() {
+        tasks[index].title = document.getElementById("title").value;
+        tasks[index].description = document.getElementById("description").value;
+        tasks[index].date = document.getElementById("date").value;
+        tasks[index].priority = document.getElementById("priority").value;
+        tasks[index].status = document.getElementById("Statut").value;
+
+        
+        localStorage.setItem('taskss', JSON.stringify(tasks));
+
+        myModel.classList.add("hidden");
+        submitTache.classList.remove("hidden");
+        
+    });
 }
+
