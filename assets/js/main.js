@@ -11,7 +11,7 @@ close.addEventListener("click", function() {
     myModel.classList.toggle("hidden");
 });
 
-const tasks = [];
+const tasks = JSON.parse(localStorage.getItem('taskss'))  || [];
 let index=0;
 const submitTache = document.getElementById("submitTache");
 submitTache.addEventListener("click", function(e) {
@@ -44,7 +44,7 @@ submitTache.addEventListener("click", function(e) {
     // console.log(tasks);
     localStorage.setItem('taskss', JSON.stringify(tasks));
     videForm();
-    afficheTask();
+    afficheTask(tasks);
     
     // myModel.classList.toggle("hidden");
 });
@@ -81,21 +81,20 @@ function TaskCount() {
 }
 
 window.onload = function(){
-    afficheTask();
+    afficheTask(tasks);
 }
 
 
 
 // affichage tache dand la page
-function afficheTask() {
-    const tasks = JSON.parse(localStorage.getItem('taskss'));
+function afficheTask(arr) {
+    // const tasks = JSON.parse(localStorage.getItem('taskss'));
     document.getElementById("tache").innerHTML = "";
     document.getElementById("doingTasks").innerHTML = "";
     document.getElementById("doneTasks").innerHTML = "";
 
-    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    tasks.forEach((task) => {
+    arr.sort((a, b) => new Date(a.date) - new Date(b.date));
+    arr.forEach((task) => {
         const divTask = document.createElement('div');
         divTask.innerHTML = `
             <div class="header-tache border-b-2 border-zinc-900 flex justify-between items-center w-full p-3">
@@ -132,7 +131,7 @@ function afficheTask() {
         deleteTaskBtn.addEventListener('click', function(e) {
             e.preventDefault();
             deleteTask(task.id); 
-            afficheTask();
+            afficheTask(tasks);
 
         });
 
@@ -147,7 +146,7 @@ function afficheTask() {
 //  delete tache
 
 function deleteTask(index) {
-    let tasks = JSON.parse(localStorage.getItem('taskss'));
+    // let tasks = JSON.parse(localStorage.getItem('taskss'));
     // console.log(index);
     
     for (let i = 0; i < tasks.length; i++) {
@@ -168,9 +167,12 @@ const btnModifier = document.getElementById("modifierTache");
 
 console.log(btnModifier);
 
-function editTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('taskss'));
-    const task = tasks[index];
+function editTask(id) {
+    // const tasks = JSON.parse(localStorage.getItem('taskss'));
+    const index = tasks.findIndex((task)=>task.id == id)
+    const task = tasks[index]
+
+    console.log(task)
 
 
     myModel.classList.remove("hidden");
@@ -198,8 +200,16 @@ function editTask(index) {
 
         myModel.classList.add("hidden");
         submitTache.classList.remove("hidden");
-        afficheTask();
+        afficheTask(tasks);
         
     });
 }
 
+const filterProirty = document.getElementById("filterPriorty");
+
+filterProirty.addEventListener("change",function(){
+    const filteredTaks = tasks.filter((task)=>task.priority === filterProirty.value);
+    afficheTask(filteredTaks)
+    // console.log(filteredTaks)
+
+})
