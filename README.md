@@ -15,7 +15,7 @@ TaskFlow est une application de gestion de tâches développée pour aider les u
 - **Accessibilité** : Conformité aux critères d'accessibilité pour une utilisation par tous.
 - **Déploiement** : Application déployée en ligne via GitHub Pages ou Vercel.
 
-### ![alt text](image.png)
+### ![alt text](./assets/images/image.png)
 - **Ajout multiple de tâches** : Modal permettant d'ajouter plusieurs tâches à la fois.
 - **LocalStorage** : Sauvegarde des modifications pour un accès ultérieur.
 - **Modification des tâches** : Fonctionnalité pour modifier des tâches existantes.
