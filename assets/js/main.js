@@ -97,30 +97,30 @@ function afficheTask(arr) {
     arr.forEach((task) => {
         const divTask = document.createElement('div');
         divTask.innerHTML = `
-            <div class="task bg-white shadow-lg rounded-lg m-4 p-4 transition-transform duration-300 transform hover:scale-105 
+        <div class="task bg-white shadow-lg rounded-lg m-4 p-4 transition-transform duration-300 transform hover:scale-105 
             ${task.priority === 'p1' ? 'bg-red-300' : 
                 task.priority === 'p2' ? 'bg-orange-300' : 
                 task.priority === 'p3' ? 'bg-green-300' : 'bg-lime-500'} 
-            ">
-    <div class="header-tache border-b-2 border-gray-300 flex justify-between items-center pb-2">
-        <i class="bi bi-pencil-square text-blue-600"></i>
-        <h3 class="font-semibold text-xl text-gray-800 truncate">${task.title}</h3>
-        <i class="bi bi-trash text-red-600 cursor-pointer hover:text-red-800"></i>
-    </div>
-    <div class="description-tache overflow-y-auto h-24 bg-gray-50 p-2 rounded-lg mt-2  ">
-        <p class="text-gray-600 break-words max-w-[365px] whitespace-normal">${task.description}</p>
-    </div>
-    <div class="foot-tache flex justify-between mt-2 items-center">
-        <p class="border-2 border-gray-300 w-24 text-center font-bold rounded-md 
-            ${task.priority === 'p1' ? 'bg-red-500' : 
-              task.priority === 'p2' ? 'bg-orange-500' : 
-              task.priority === 'p3' ? 'bg-green-500' : 'bg-lime-500'} 
-            text-white transition-colors duration-300">
-            ${task.priority}
-        </p>
-        <input type="date" class="border-2 text-zinc-950 border-gray-300 w-32 text-center font-bold rounded-md" value="${task.date}">
-    </div>
-</div>
+        ">
+            <div class="header-tache border-b-2 border-gray-300 flex justify-between items-center pb-2">
+                <i class="bi bi-pencil-square text-blue-600"></i>
+                <h3 class="font-semibold text-xl text-gray-800 truncate">${task.title}</h3>
+                <i class="bi bi-trash text-red-600 cursor-pointer hover:text-red-800"></i>
+            </div>
+            <div class="description-tache overflow-y-auto h-24 bg-gray-50 p-2 rounded-lg mt-2  ">
+                <p class="text-gray-600 break-words max-w-[365px] whitespace-normal">${task.description}</p>
+            </div>
+            <div class="foot-tache flex justify-between mt-2 items-center">
+                <p class="border-2 border-gray-300 w-24 text-center font-bold rounded-md 
+                    ${task.priority === 'p1' ? 'bg-red-500' : 
+                    task.priority === 'p2' ? 'bg-orange-500' : 
+                    task.priority === 'p3' ? 'bg-green-500' : 'bg-lime-500'} 
+                    text-white transition-colors duration-300">
+                    ${task.priority}
+                </p>
+                <input type="date" class="border-2 text-zinc-950 border-gray-300 w-32 text-center font-bold rounded-md" value="${task.date}">
+            </div>
+        </div>
 
         `;
 
