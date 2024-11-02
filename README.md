@@ -28,8 +28,6 @@ TaskFlow est une application de gestion de tâches développée pour aider les u
    ```bash
    git clone https://github.com/Youcode-Classe-E-2024-2025/amine_sabri_Task_Flow
 
-   
-
-   ## License
-lien de projet  [project link](https://youcode-classe-e-2024-2025.github.io/amine_sabri_Task_Flow/)
+## lien de projet
+  project link [here](https://youcode-classe-e-2024-2025.github.io/amine_sabri_Task_Flow/)
 
