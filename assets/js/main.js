@@ -4,10 +4,13 @@ const close = document.getElementById("close");
 
 
 btnAdd.addEventListener("click", function() {
+    btnModifier.classList.add("hidden");
+    submitTache.classList.remove("hidden")
     myModel.classList.toggle("hidden");
 });
 
 close.addEventListener("click", function() {
+    videForm();
     myModel.classList.toggle("hidden");
 });
 
@@ -210,6 +213,7 @@ function editTask(id) {
         submitTache.classList.remove("hidden");
         afficheTask(tasks);
         
+        videForm();
     };
 }
 
