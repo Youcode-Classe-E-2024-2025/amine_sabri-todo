@@ -28,7 +28,7 @@ submitTache.addEventListener("click", function(e) {
     const status = document.getElementById("Statut").value;
 
     if(!title || !date || !description || !priority || !status){
-        alert("form raha vide");
+        alert("form is empty");
         return;
     }
 
